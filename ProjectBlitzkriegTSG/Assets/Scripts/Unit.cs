@@ -8,7 +8,7 @@ public class Unit : MonoBehaviour
     [SerializeField] private Animator unitAnimator;
     private Vector3 targetPosition;
 
-    GridPosition gridPosition;
+    private GridPosition gridPosition;
 
     private void Awake()
     {
@@ -18,7 +18,8 @@ public class Unit : MonoBehaviour
     private void Start()
     {
         gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
-        LevelGrid.Instance.AddUnitAtGridPosition(gridPosition,this);
+        LevelGrid.Instance.AddUnitAtGridPosition(gridPosition, this);
+
     }
 
 

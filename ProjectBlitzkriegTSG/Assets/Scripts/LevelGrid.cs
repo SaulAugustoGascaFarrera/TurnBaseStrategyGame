@@ -13,13 +13,8 @@ public class LevelGrid : MonoBehaviour
     private GridSystem gridSystem;
     private void Awake()
     {
-        gridSystem = new GridSystem(10, 10, 2);
-        gridSystem.CreateDebugObjects(gridDebugObjetPrefab);
-    }
 
-    private void Start()
-    {
-        if(Instance != null)
+        if (Instance != null)
         {
             Debug.LogError("Theres more than one LevelGrid " + transform + " - " + Instance);
             Destroy(gameObject);
@@ -27,6 +22,8 @@ public class LevelGrid : MonoBehaviour
         }
 
         Instance = this;
+        gridSystem = new GridSystem(10, 10, 2);
+        gridSystem.CreateDebugObjects(gridDebugObjetPrefab);
     }
 
     public void AddUnitAtGridPosition(GridPosition gridPosition,Unit unit)
