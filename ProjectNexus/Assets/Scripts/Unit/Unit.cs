@@ -8,10 +8,25 @@ public class Unit : MonoBehaviour
     [Header("Movement Atts")]
     private Vector3 targetPosition;
     [SerializeField] private float movementSpeed = 4.0f;
+    [SerializeField] private float rotationSpeed = 10.0f;
+
+    [Header("Animation Atts")]
+    private Animator animator;
+    [SerializeField] private string animator_IsWalking = "IsWalking";
+
+    private void Awake()
+    {
+        targetPosition = transform.position;
+        animator = GetComponentInChildren<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
     {
+        if (!animator) return;
+
+        
+
         float stoppingDistance = 0.1f;
 
         if(Vector3.Distance(transform.position,targetPosition) > stoppingDistance)
@@ -20,21 +35,20 @@ public class Unit : MonoBehaviour
             transform.position += moveDirection * movementSpeed * Time.deltaTime;
 
 
-            transform.forward = Vector3.Slerp(transform.forward, moveDirection, 6.0f * Time.deltaTime);
-           
-        }
+            transform.forward = Vector3.Lerp(transform.forward, moveDirection, rotationSpeed * Time.deltaTime);
 
-       
-        if(Input.GetMouseButtonDown(0))
-        {
-            Move(MouseWorld.GetPosition());
+            animator.SetBool(animator_IsWalking, true);
+
         }
-        
+        else
+        {
+            animator.SetBool(animator_IsWalking, false);
+        }
 
     }
 
 
-    private void Move(Vector3 targetPosition)
+    public void Move(Vector3 targetPosition)
     {
           this.targetPosition = targetPosition;
     }
