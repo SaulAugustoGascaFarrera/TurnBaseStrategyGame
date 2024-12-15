@@ -18,12 +18,19 @@ public class UnitSelectedVisual : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        UnitActionSystem.instance.OnSelectedUnitChanged += Instance_OnSelectedUnitChanged;
+        UnitActionSystem.instance.OnSelectedUnitChanged += Instance_OnSelectedUnitChanged; ;
     }
 
-    private void Instance_OnSelectedUnitChanged(object sender, System.EventArgs e)
+    private void Instance_OnSelectedUnitChanged(object sender, UnitActionSystem.OnSelectedUnitEventArgs e)
     {
-        UpdateVisual();
+        if (e.argSelectedUnit == unit)
+        {
+            meshRenderer.enabled = true;
+        }
+        else
+        {
+            meshRenderer.enabled = false;
+        }
     }
 
     private void UpdateVisual()

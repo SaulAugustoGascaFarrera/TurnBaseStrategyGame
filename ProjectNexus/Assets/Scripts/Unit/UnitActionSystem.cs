@@ -7,11 +7,11 @@ public class UnitActionSystem : MonoBehaviour
 {
     public static UnitActionSystem instance;
 
-    public event EventHandler OnSelectedUnitChanged;
+    public event EventHandler<OnSelectedUnitEventArgs> OnSelectedUnitChanged;
 
-    public class OnSelectedUnitEventSrgs
+    public class OnSelectedUnitEventArgs : EventArgs
     {
-
+        public Unit argSelectedUnit;
     }
 
     [SerializeField] private Unit selectedUnit;
@@ -71,7 +71,10 @@ public class UnitActionSystem : MonoBehaviour
 
         this.selectedUnit = selectedUnit;
 
-        OnSelectedUnitChanged?.Invoke(this,EventArgs.Empty);
+        OnSelectedUnitChanged?.Invoke(this, new OnSelectedUnitEventArgs
+        {
+            argSelectedUnit = selectedUnit
+        });
 
     }
 
