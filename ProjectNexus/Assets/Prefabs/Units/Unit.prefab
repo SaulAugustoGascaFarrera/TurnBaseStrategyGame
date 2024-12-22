@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 3123000326191833503}
   - component: {fileID: 3807888259958606154}
   - component: {fileID: 4819062124956835140}
+  - component: {fileID: 1375060041460346431}
   m_Layer: 7
   m_Name: Unit
   m_TagString: Untagged
@@ -145,9 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151f5d45c75a3ed4ab2c9a2ab7bcf0c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 4
-  rotationSpeed: 10
-  animator_IsWalking: IsWalking
 --- !u!65 &4819062124956835140
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -169,6 +167,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.5784661, y: 1.8414706, z: 0.3985169}
   m_Center: {x: -0.023187846, y: 0.8664251, z: -0.0028889477}
+--- !u!114 &1375060041460346431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7203634004442655991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7b8bcf1d91ec1944bc1e9d2f5e991e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 4
+  rotationSpeed: 10
+  maxMoveDistance: 4
+  unit: {fileID: 0}
+  animator_IsWalking: IsWalking
 --- !u!1001 &7595171660143303425
 PrefabInstance:
   m_ObjectHideFlags: 0

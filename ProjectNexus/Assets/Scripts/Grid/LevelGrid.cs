@@ -9,6 +9,7 @@ public class LevelGrid : MonoBehaviour
 
     [SerializeField] private Transform gridDebugbjectPrefab;
     private GridSystem gridSystem;
+    [SerializeField] private Unit unit;
     private void Awake()
     {
         if(Instance != null)
@@ -28,6 +29,7 @@ public class LevelGrid : MonoBehaviour
     private void Update()
     {
         //Debug.Log(gridSystem.GetGridPosition(MouseWorld.GetPosition()));
+       
     }
 
     public void AddUnitAtGridPosition(GridPosition gridPosition,Unit unit)
@@ -56,6 +58,23 @@ public class LevelGrid : MonoBehaviour
         AddUnitAtGridPosition(toGridPosition, unit);
     }
 
-    public GridPosition GetGridPosition(Vector3 worldPosition) => gridSystem.GetGridPosition(worldPosition);    
+    public GridPosition GetGridPosition(Vector3 worldPosition) => gridSystem.GetGridPosition(worldPosition);
+
+
+    public Vector3 GetWorldPosition(GridPosition gridPosition) => gridSystem.GetWorldPosition(gridPosition); 
+
+    public bool IsValidGridPositon(GridPosition gridPosition) => gridSystem.IsValidGridPosition(gridPosition);
+
+
+    public int GetWidth()  => gridSystem.GetWidth();
+
+    public int GetHeight() => gridSystem.GetHeight();
+
+    public bool HasAnyUnitAtGridPosition(GridPosition gridPosition)
+    {
+        GridObject gridObject = gridSystem.GetGridObject(gridPosition);
+
+        return gridObject.HasAnyUnit();
+    }
 }
 
